@@ -10,8 +10,8 @@ const DataSitesUl = ({ sites }: ListUlProps) => {
     <>
       <div>DataSitesUl component</div>
       {sites.map((site, index) => (
-        <div key={index}>
-          <img src={site.picture} />
+        <div key={index} className="p-10 border">
+          <img src={site.picture} className="w-[10rem]" />
           <p>{site.name}</p>
           <ul>
             <li>{site.address}</li>
