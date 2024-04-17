@@ -15,8 +15,15 @@ function App() {
   return (
     <>
     <p>TODO</p>
-    <SitesList/>
-    <DatasList/>
+      <section className="border p-20">
+        <div className="border bg-slate-100 border-lime-800 flex flex-col gap-2 p-8">
+
+        <SitesList/>
+        </div>
+      </section>
+      <section>
+        <DatasList/>
+      </section>
     </>
   )
 }
