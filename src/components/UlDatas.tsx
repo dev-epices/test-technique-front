@@ -20,15 +20,26 @@ const DataSitesUl = ({ staticDatas }: UlDatasProps) => {
     <>
       <div className=" font-mono underline">DataSitesUl component</div>
       {staticDatas.map((n, index) => (
-        <div key={index} style={{ border: 'solid red 1px', padding: '0.5rem' }}>
+        <div
+          key={index}
+          className="bg-slate-100 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-8"
+        >
           site id : {n.site_id}
           {staticDatas.map((e) =>
             e.data.map((dat, datIndex) => (
-              <ul key={datIndex} style={{ listStyle: 'none' }}>
-                <li>date : {dat.datetime.toLocaleString()}</li>
-                <li> production : {dat.production}</li>
-                <li>référence : {dat.reference}</li>
-              </ul>
+              <div
+                key={datIndex}
+                className="flex items-center overflow-hidden h-32 bg-white shadow-[rgba(0,0,0,0.1)_0px_1px_3px] rounded"
+              >
+                <div className="bg-slate-400 h-full w-32 aspect-square"></div>
+                <div className=" p-4">
+                  <ul>
+                    <li>date : {dat.datetime.toLocaleString()}</li>
+                    <li> production : {dat.production}</li>
+                    <li>référence : {dat.reference}</li>
+                  </ul>
+                </div>
+              </div>
             ))
           )}
         </div>

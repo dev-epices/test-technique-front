@@ -16,11 +16,12 @@ function App() {
     <>
     <p>TODO</p>
       <section className="border p-20">
-        <div className="border bg-slate-100 border-lime-800 flex flex-col gap-2 p-8">
+        <div className="border bg-slate-100 grid sm:grid-cols-2 md:grid-cols-2 gap-4">
 
         <SitesList/>
         </div>
       </section>
+
       <section>
         <DatasList/>
       </section>

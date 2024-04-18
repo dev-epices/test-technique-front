@@ -16,7 +16,6 @@ const DataSitesUl = ({ sites }: ListUlProps) => {
 
   return (
     <>
-      <div className="">DataSitesUl component</div>
       {sites.map((site, index) => (
         <div key={index} className="flex bg-white rounded overflow-hidden">
           <div className=" transition-all flex-none w-24 sm:w-48 relative">
