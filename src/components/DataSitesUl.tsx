@@ -17,7 +17,10 @@ const DataSitesUl = ({ sites }: ListUlProps) => {
   return (
     <>
       {sites.map((site, index) => (
-        <div key={index} className="flex bg-white rounded overflow-hidden">
+        <div
+          key={index}
+          className="flex bg-white rounded overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px]"
+        >
           <div className=" transition-all flex-none w-24 sm:w-48 relative">
             <img
               src={site.picture}

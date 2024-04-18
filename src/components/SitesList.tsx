@@ -39,7 +39,7 @@ function SitesList() {
 
   return (
     <>
-      <div>SiteList component (staticSites)</div>
+      <h1>SiteList component (staticSites)</h1>
       <DataSitesUl sites={staticSites} />
     </>
   )

@@ -8,17 +8,46 @@ import { useState, useEffect } from 'react'
 import SitesList from "./components/SitesList";
 import DataList from "./components/DatasList"
 import DatasList from "./components/DatasList";
+import Calendar from "./components/Calendar"
 
 
 function App() {
 
   return (
     <>
-    <p>TODO</p>
-      <section className="border p-20">
-        <div className="border bg-slate-100 grid sm:grid-cols-2 md:grid-cols-2 gap-4">
+    <section className="">
+      <div className="md:container md:mx-auto py-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 *:border *:p-4">
+            <div className="flex flex-col">
+            <p>TODO</p>
+            <div className="todo *:py-2">
+              <p className="font-bold">Pour chaque jour :</p>
+              <ul>
+                <li>Somme de la Production cumulé sur l'ensemble des sites</li>
+                <li>Nombre de sites dans chaques status</li>
+              </ul>
+              <ul>
+              <p className="font-bold">Status du site</p>
+                <li>Pas de données (a une date donnée)</li>
+                <li>À l’arrêt (prod nullle)</li>
+                <li>Dégradé (inférieur à 50%)</li>
+                <li>Ok (else)</li>
+              </ul>
+            </div>
+            </div>
+            <div>
+              <Calendar/>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className=" bg-slate-50">
+        <div className="md:container md:mx-auto py-10">
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
 
         <SitesList/>
+        </div>
         </div>
       </section>
 
