@@ -18,6 +18,9 @@ function App() {
     <section className="">
       <div className="md:container md:mx-auto py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 *:border *:p-4">
+            <div>
+              <Calendar/>
+            </div>
             <div className="flex flex-col">
             <p>TODO</p>
             <div className="todo *:py-2">
@@ -34,9 +37,6 @@ function App() {
                 <li>Ok (else)</li>
               </ul>
             </div>
-            </div>
-            <div>
-              <Calendar/>
             </div>
           </div>
         </div>
