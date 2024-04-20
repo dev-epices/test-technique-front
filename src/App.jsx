@@ -13,21 +13,24 @@ import Calendar from "./components/Calendar"
 
 function App() {
 
+
   return (
     <>
     <section className="">
       <div className="md:container md:mx-auto py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 *:border *:p-4">
-            <div>
-              <Calendar/>
-            </div>
-            <div className="flex flex-col">
-            <p>TODO</p>
-            <div className="todo *:py-2">
-              <p className="font-bold">Pour chaque jour :</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 *:border *:p-4">
+
+            <p><span className="font-bold">ÉPICE ENERGIE</span><br/>test technique</p>
               <ul>
+              <p className="font-bold">Pour chaque jour :</p>
                 <li>Somme de la Production cumulé sur l'ensemble des sites</li>
                 <li>Nombre de sites dans chaques status</li>
+              </ul>
+              <ul>
+                <p className="font-bold">Pour un site sélectionné :</p>
+                <li>✅ la photo et les différentes informations du site (disponibles dans l'objet Site)</li>
+                <li>🟥 la production cumulée du site</li>
+                <li>🟥 le taux de production = le pourcentage de la production cumulée par rapport à la production de référence cumulée</li>
               </ul>
               <ul>
               <p className="font-bold">Status du site</p>
@@ -36,24 +39,34 @@ function App() {
                 <li>Dégradé (inférieur à 50%)</li>
                 <li>Ok (else)</li>
               </ul>
-            </div>
-            </div>
           </div>
         </div>
       </section>
-      <section className=" bg-slate-50">
+
+      {/* <section className=" bg-slate-50">
         <div className="md:container md:mx-auto py-10">
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
 
         <SitesList/>
         </div>
         </div>
+      </section> */}
+
+      <section className="bg-slate-200">
+        <div className="md:container md:mx-auto py-10">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="bg-white sticky top-0 h-[500px] z-50">
+                <Calendar/>
+              </div>
+              <DatasList/>
+
+            </div>
+
+          </div>
       </section>
 
-      <section>
-        <DatasList/>
-      </section>
+
     </>
   )
 }

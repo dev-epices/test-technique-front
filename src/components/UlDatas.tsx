@@ -18,12 +18,8 @@ type UlDatasProps = {
 const DataSitesUl = ({ staticDatas }: UlDatasProps) => {
   return (
     <>
-      <div className=" font-mono underline">DataSitesUl component</div>
       {staticDatas.map((n, index) => (
-        <div
-          key={index}
-          className="bg-slate-100 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-8"
-        >
+        <div key={index} className=" grid sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
           site id : {n.site_id}
           {staticDatas.map((e) =>
             e.data.map((dat, datIndex) => (
