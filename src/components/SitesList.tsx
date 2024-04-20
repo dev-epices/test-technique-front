@@ -17,7 +17,6 @@ function SitesList() {
           <SiteCard site={site} />
         </div>
       ))}
-      {/* <DataSitesUl sites={sites} /> */}
     </>
   )
 }

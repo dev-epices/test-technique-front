@@ -185,23 +185,6 @@ const DatasList = () => {
           </div>
           <div className="col-span-1 lg:col-span-2 p-4">
             <p>Site 1234 | new Date(2024, 3, 1, 9)</p>
-            <ul className="flex flex-col space-x-2">
-              <p>Production : </p>
-              {getData.map((e, index) => (
-                <ul key={index}>
-                  <li className="  space-x-2">
-                    <span>{e.production} kwh?</span>
-                    <span>{e.datetime.toLocaleDateString()}</span>
-                  </li>
-                  <p>Ref : {e.reference}</p>
-                </ul>
-              ))}
-            </ul>
-            {/* <ul className="flex space-x-2">
-              {dayProdExtract.map((e, index) => (
-                <li key={index}>{e}</li>
-              ))}
-            </ul> */}
           </div>
         </div>
       </div>

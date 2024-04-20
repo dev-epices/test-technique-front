@@ -47,13 +47,21 @@ const SiteCard = ({ site }: SiteCardProps) => {
     const ratio = txProd(sumOfProds, sumOfRef)
 
     if (ratio === 0) {
-      message = <p className="px-4 py-2 bg-red-700 rounded-xl text-white">A L’ARRÊT {ratio}</p>
+      message = (
+        <p className="px-4 py-2 bg-gray-400 rounded-xl text-white">A L’ARRÊT {ratio.toFixed(1)}</p>
+      )
     } else if (ratio >= 1 && ratio < 69) {
       message = (
-        <p className="px-4 py-2 bg-lime-700/50 rounded-xl text-white">STATUS DÉGRADÉ{ratio}</p>
+        <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">
+          STATUS DÉGRADÉ {ratio.toFixed(1)}
+        </p>
       )
     } else {
-      message = <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">STATUS OK{ratio}</p>
+      message = (
+        <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">
+          STATUS OK : {ratio.toFixed(1)}
+        </p>
+      )
     }
 
     // return sumOfProds === 0 ? 0 : sumOfProds
@@ -100,13 +108,14 @@ const SiteCard = ({ site }: SiteCardProps) => {
                 </div>
                 <div className="flex flex-col text-xs">
                   <span className=" uppercase font-bold">Taux de production</span>
-                  <span className="">( Max Power × Prod ref ) / 100 </span>
+                  <span className="">( Prods × Prods ref ) / 100 </span>
                 </div>
               </div>
             </div>
             {/* {messageStatus()} */}
+            {listenProds()}
             {/* <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">status OK</p> */}
-            {/* <div className="border w-full">
+            <div className="mt-4 w-full text-xs">
               <ul className="flex space-x-2">
                 <p>Date :</p>
                 {siteDatas.map((e, index) => (
@@ -131,8 +140,7 @@ const SiteCard = ({ site }: SiteCardProps) => {
                   <li key={index}>{e.reference}</li>
                 ))}
               </ul>
-              <div>Production cumulée : {listenProds()}</div>
-            </div> */}
+            </div>
           </div>
         </div>
       </a>
