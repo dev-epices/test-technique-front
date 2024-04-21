@@ -18,33 +18,6 @@ const DatasList = () => {
   const getData = useData(1234, new Date(2024, 3, 1, 9))
   console.log(`getData. : ${getData.map((e) => e.production)}`)
 
-  const forAllSites = () => {
-    const date = new Date(2024, 3, 1, 9)
-    const sitesIds = useSite()
-
-    let siteArray = []
-    let prodsArray: number[] = []
-
-    // Loop through the length of the array push sitesIds in an array
-    for (let i = 0; i < sitesIds.length; i++) {
-      console.log(sitesIds[i])
-      siteArray.push(sitesIds[i].id)
-    }
-    // for (let i = 0; i < siteArray.length; i++) {
-    //   useData(siteArray[i], date).map((e) => prodsArray.push(e.production))
-    // }
-    // const cumulProd = staticDatas.filter(function (prod) {
-    //   return prod.site_id === 1234
-    // })
-
-    return `liste id de siteArray : ${siteArray} - prodsArray : ${prodsArray}`
-  }
-  console.log(`forAllSites return : ${forAllSites()}`)
-
-  //----
-
-  //----
-
   const staticDatas: Array<{ site_id: number; data: Array<DataPoint> }> = [
     {
       site_id: 1234,
@@ -120,27 +93,6 @@ const DatasList = () => {
       ],
     },
   ]
-  const hourlyData = async () => {
-    const datas = await fetchSites()
-    console.log(`datas : ${datas}`)
-    const ids = datas.map((e) => e.id)
-    console.log(`ids : ${ids}`)
-    const start_dates = datas.map((e) => e.start_date)
-    console.log(`start_dates : ${start_dates}`)
-    return ids
-  }
-  const getDataForDay = async (siteId: number, day: Date) => {
-    const ids = await fetchDataForDay(siteId, day)
-    console.log(
-      `getDataForDay for ${siteId} at ${day.toLocaleDateString('fr-FR', {
-        dateStyle: 'full',
-      })} : ${ids.map((e) => e.production)}`
-    )
-    const siteProdsByDay = ids.map((prod) => prod.production)
-    return siteProdsByDay
-  }
-  // hourlyData()
-  // const getProds = async() => await getDataForDay(1234, new Date(2024, 3, 1, 9))
 
   const cumulProd = (): React.ReactNode => {
     // const cumulProd = staticDatas.filter(function (prod) {
@@ -173,9 +125,11 @@ const DatasList = () => {
   }
 
   return (
-    <div className="">
-      <div className="sticky top-0 z-10">
-        <div className=" rounded-xl grid lg:grid-cols-3 *:border gap-4 mb-8 *:rounded-xl  *:bg-white  h-60">
+    <div className="" /** parent to made sticky work */>
+      <div className="sticky top-0 z-10" /** sticky container */>
+        <div /** grid layout  */
+          className="rounded-xl mb-4 grid lg:grid-cols-3 *:border gap-4 *:rounded-xl  *:bg-white  h-60 bg-gradient-to-b from-slate-200 via-slate-100"
+        >
           <div className=" flex flex-col border  p-4">
             <span className="text-xs">Somme de la production cumulée sur l’ensemble des sites</span>
             <div className="flex gap-1 text-lime-700">
@@ -188,7 +142,7 @@ const DatasList = () => {
           </div>
         </div>
       </div>
-      <div className=" pt-36 grid sm:grid-cols-1 2xl:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-1 2xl:grid-cols-2 gap-4">
         <SitesList />
       </div>
       {/* <div className="  rounded-xl">

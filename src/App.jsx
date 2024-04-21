@@ -18,26 +18,26 @@ function App() {
     <>
     <section className="">
       <div className="md:container md:mx-auto py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 *:border *:p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 *:border *:p-4 text-xs text-slate-500">
 
             <p><span className="font-bold">ÉPICE ENERGIE</span><br/>test technique</p>
               <ul>
               <p className="font-bold">Pour chaque jour :</p>
-                <li>Somme de la Production cumulé sur l'ensemble des sites</li>
-                <li>Nombre de sites dans chaques status</li>
+                <li>🟥 Somme de la Production cumulé sur l'ensemble des sites</li>
+                <li>🟥 Nombre de sites dans chaques status</li>
               </ul>
               <ul>
                 <p className="font-bold">Pour un site sélectionné :</p>
                 <li>✅ la photo et les différentes informations du site (disponibles dans l'objet Site)</li>
-                <li>🟥 la production cumulée du site</li>
-                <li>🟥 le taux de production = le pourcentage de la production cumulée par rapport à la production de référence cumulée</li>
+                <li>✅ la production cumulée du site</li>
+                <li>✅ le taux de production = le pourcentage de la production cumulée par rapport à la production de référence cumulée</li>
               </ul>
               <ul>
               <p className="font-bold">Status du site</p>
-                <li>Pas de données (a une date donnée)</li>
-                <li>À l’arrêt (prod nullle)</li>
-                <li>Dégradé (inférieur à 50%)</li>
-                <li>Ok (else)</li>
+                <li>✅ Pas de données (a une date donnée)</li>
+                <li>✅ À l’arrêt (prod nullle)</li>
+                <li>✅ Dégradé (inférieur à 50%)</li>
+                <li>✅ Ok (else)</li>
               </ul>
           </div>
         </div>
@@ -56,13 +56,11 @@ function App() {
       <section className="bg-slate-200">
         <div className="md:container md:mx-auto py-10">
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="bg-white sticky top-0 h-[500px] z-50">
+              <div className="sticky top-0 bg-white z-50 h-full">
                 <Calendar/>
               </div>
               <DatasList/>
-
             </div>
-
           </div>
       </section>
 

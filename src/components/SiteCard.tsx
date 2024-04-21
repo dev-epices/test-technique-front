@@ -7,42 +7,49 @@ interface SiteCardProps {
 }
 
 const SiteCard = ({ site }: SiteCardProps) => {
-  // calc
-  const txProd = (prodC: number, prodRef: number) => {
-    let txProdCalc = (prodC * 100) / prodRef
+  // calcul du taux de production
+  //=> (toutes les productions × toutes les reférences)/100
+  const txProd = (totalProds: number, totalRefs: number) => {
+    let txProdCalc = (totalProds * 100) / totalRefs
     return txProdCalc
   }
   //--
-  //---- get datas
-  const getData = useData(1234, new Date(2024, 3, 1, 9))
+  /**
+   * Flo: Fetch datas with site.id and a static date
+   *
+   * @returns DataPoint[]
+   */
   const siteDatas = useData(site.id, new Date(2024, 3, 1, 9))
-  console.log(`getData. in site : ${getData.map((e) => e.production)}`)
   //--
+
+  /**
+   * Flo: Status evaluation
+   *
+   * @returns JSX
+   */
   const listenProds = () => {
     // initialize message to return
     let message = <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">NULL</p>
 
     const sumOfProds =
-      getData.length > 0
+      siteDatas.length > 0
         ? siteDatas
             .map((e) => e.production)
             .reduce((a, b) => {
               return a + b
             })
         : 0
-    // // add all prods
-    // const sumOfProds = getData
-    //   .map((e) => e.production)
-    //   .reduce((a, b) => {
-    //     return a + b
-    //   })
+    const sumOfRef =
+      siteDatas.length > 0
+        ? siteDatas
+            .map((e) => e.reference)
+            .reduce((a, b) => {
+              return a + b
+            })
+        : 0
+
     const isProd = siteDatas.length
-    // add all refs
-    const sumOfRef = siteDatas
-      .map((e) => e.reference)
-      .reduce((a, b) => {
-        return a + b
-      })
+
     // percentage calculation
     const ratio = txProd(sumOfProds, sumOfRef)
 
@@ -52,9 +59,13 @@ const SiteCard = ({ site }: SiteCardProps) => {
       )
     } else if (ratio >= 1 && ratio < 69) {
       message = (
-        <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">
+        <p className="px-4 py-2 bg-teal-600 rounded-xl text-white">
           STATUS DÉGRADÉ {ratio.toFixed(1)}
         </p>
+      )
+    } else if (isProd === 0) {
+      message = (
+        <p className="px-4 py-2 bg-red-500 rounded-xl text-white">NO DATA {ratio.toFixed(1)}</p>
       )
     } else {
       message = (
@@ -68,18 +79,7 @@ const SiteCard = ({ site }: SiteCardProps) => {
     return message
   }
   //--
-  const messageStatus = () => {
-    let message = <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">NULL</p>
 
-    if (getData.length === 0) {
-      message = <p className="px-4 py-2 bg-red-700 rounded-xl text-white">NO DATA</p>
-    } else if (getData.length > 1) {
-      message = <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">STATUS OK</p>
-    } else {
-      message = <p className="px-4 py-2 bg-lime-700 rounded-xl text-white">STATUS OK</p>
-    }
-    return message
-  }
   return (
     <>
       <a
