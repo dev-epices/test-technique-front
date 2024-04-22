@@ -12,6 +12,8 @@ import useData from '../Utils/useData'
 export const useStatus = (id: number, changeDate: Date) => {
   const siteDatas = useData(id, changeDate)
 
+  const [prods, setProds] = useState<DataPoint[]>([])
+
   const txProd = (totalProds: number, totalRefs: number) => {
     let txProdCalc = (totalProds * 100) / totalRefs
     return txProdCalc
@@ -54,7 +56,9 @@ export const useStatus = (id: number, changeDate: Date) => {
     )
   } else if (isProd === 0) {
     message = (
-      <p className="px-4 py-2 bg-red-500 rounded-xl text-white">PAS DE DONÉES {ratio.toFixed(1)}</p>
+      <p className="px-4 py-2 bg-red-500 rounded-xl text-white">
+        PAS DE DONNÉES {ratio.toFixed(1)}
+      </p>
     )
   } else {
     message = (

@@ -13,7 +13,6 @@ function SitesList() {
     <>
       {sites.map((site, index) => (
         <div key={index}>
-          {/* <SiteCard site={site} date={new Date(2024, 3, 1, 9)} /> */}
           <SiteCard site={site} />
         </div>
       ))}

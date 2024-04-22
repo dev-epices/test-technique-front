@@ -3,6 +3,8 @@ import { DataPoint, Site } from '../data/types'
 import useData from '../Utils/useData'
 import { UiContext, useUiContext } from '../Utils/UiContext'
 import { useStatus } from '../Utils/useStatus'
+import Status from '../components/Status'
+import SiteCardDatas from './SiteCardDatas'
 
 interface SiteCardProps {
   site: Site
@@ -12,14 +14,6 @@ interface SiteCardProps {
 const SiteCard = ({ site }: SiteCardProps) => {
   const calendarDate = useUiContext() // => useUiContext custom hook to be sure calendarDate is not undefined
   const changeDate = calendarDate
-
-  const [calDate, setCalDate] = useState<Date>(changeDate)
-
-  const siteDatas = useData(site.id, calDate)
-  useEffect(() => {
-    console.log('calDate :', calDate)
-    // return () => console.log('clean up')
-  }, [calDate])
 
   // calcul du taux de production
   //=> (toutes les productions × toutes les reférences)/100
@@ -60,33 +54,11 @@ const SiteCard = ({ site }: SiteCardProps) => {
                 </div>
               </div>
             </div>
-            {/* {messageStatus()} */}
-            {/* {listenProds(site.id, calDate)} */}
-            {useStatus(site.id, calDate)}
-            <div className="mt-4 w-full text-xs">
-              <p>
-                changeDate :{' '}
-                {changeDate.toLocaleString('fr-FR', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                  hour: 'numeric',
-                })}
-              </p>
 
-              <ul className="flex space-x-2">
-                <li>Production :</li>
-                {siteDatas.map((e, index) => (
-                  <li key={index}>{e.production}</li>
-                ))}
-              </ul>
-              <ul className="flex space-x-2">
-                <li>Référence :</li>
-                {siteDatas.map((e, index) => (
-                  <li key={index}>{e.reference}</li>
-                ))}
-              </ul>
-            </div>
+            <Status id={site.id} calDate={changeDate.datetime} />
+            <SiteCardDatas id={site.id} />
+
+            <div></div>
           </div>
         </div>
       </a>

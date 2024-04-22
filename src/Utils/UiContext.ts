@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { DataPoint, Site } from '../data/types'
 
 // export const UiContext = createContext(undefined)
-// export const UiContext = createContext<DataPoint | undefined>(undefined)
-export const UiContext = createContext<Date | undefined>(undefined)
+export const UiContext = createContext<DataPoint | undefined>(undefined)
+// export const UiContext = createContext<Date | undefined>(undefined)
 
 export function useUiContext() {
   const calendarDate = useContext(UiContext)
