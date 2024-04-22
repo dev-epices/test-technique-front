@@ -26,5 +26,11 @@ const useData = (site_id: number, date: Date) => {
   }, [])
   return prods
 }
+export const getSites_ids = (site_id: number[], date: Date) => {
+  const id = site_id
+  const datas_date = date
+  const message = `getSites_ids result = ${id.toString()} - date = ${datas_date.toJSON()}`
+  return message
+}
 
 export default useData
