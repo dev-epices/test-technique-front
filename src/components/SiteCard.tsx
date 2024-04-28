@@ -5,6 +5,7 @@ import { UiContext, useUiContext } from '../Utils/UiContext'
 import { useStatus } from '../Utils/useStatus'
 import Status from '../components/Status'
 import SiteCardDatas from './SiteCardDatas'
+import { Experimental } from './Experimental'
 
 interface SiteCardProps {
   site: Site
@@ -14,6 +15,7 @@ interface SiteCardProps {
 const SiteCard = ({ site }: SiteCardProps) => {
   const calendarDate = useUiContext() // => useUiContext custom hook to be sure calendarDate is not undefined
   const changeDate = calendarDate
+  // console.log(`calendarDate ${calendarDate}`)
 
   // calcul du taux de production
   //=> (toutes les productions × toutes les reférences)/100
@@ -54,11 +56,11 @@ const SiteCard = ({ site }: SiteCardProps) => {
                 </div>
               </div>
             </div>
-
-            <Status id={site.id} calDate={changeDate.datetime} />
+            <Status site_id={site.id} datetime={calendarDate.datetime} />
             <SiteCardDatas id={site.id} />
-
-            <div></div>
+            <ul className="text-xs text-slate-400">
+              <Experimental site_id={site.id} datetime={calendarDate.datetime} />
+            </ul>
           </div>
         </div>
       </a>

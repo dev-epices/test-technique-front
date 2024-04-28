@@ -4,6 +4,7 @@ import { DataPoint, Site } from '../data/types'
 
 const useData = (site_id: number, date: Date) => {
   const [prods, setProds] = useState<DataPoint[]>([])
+  const [query, setQuery] = useState({ date })
   // const [prods, setProds] = useState<number[]>([])
 
   useEffect(() => {
@@ -23,8 +24,30 @@ const useData = (site_id: number, date: Date) => {
       // setProds(result)
     }
     fetchProds()
-  }, [])
-  return prods
+  }, [query])
+  return (
+    <>
+      <ul className="flex space-x-2">
+        <li className=" w-24 ">Prooduction :</li>
+        {prods.map((e, index) => (
+          <li key={index}>{e.production}</li>
+        ))}
+
+        {/* {fetchDatas.map((e, index) => (
+          <li key={index}>{e.production}</li>
+        ))}{' '} */}
+      </ul>
+      <ul className="flex space-x-2">
+        <li className="w-24 ">Réféérence :</li>
+        {prods.map((e, index) => (
+          <li key={index}>{e.reference}</li>
+        ))}
+        {/* {fetchDatas.map((e, index) => (
+          <li key={index}>{e.reference}</li>
+        ))} */}
+      </ul>
+    </>
+  )
 }
 export const getSites_ids = (site_id: number[], date: Date) => {
   const id = site_id

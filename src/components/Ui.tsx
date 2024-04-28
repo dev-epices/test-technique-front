@@ -12,9 +12,11 @@ const Ui = () => {
     // site_id: 310,
     site_id: 8563,
   }
+  // console.log(`UI siteToShow ${siteToShow.site_id}`)
 
   // general state of dates selected, default 1/04/2024
   const [selectedDay, setSelectedDay] = useState<Date>(new Date(2024, 3, 1))
+  // console.log(`UI [selectedDay] ${selectedDay}`)
 
   // default state for site data
   const [site_Data, setSite_data] = useState<DataPoint>({
@@ -22,6 +24,7 @@ const Ui = () => {
     production: 100,
     reference: 100,
   })
+  // console.log(`UI [site_data] ${site_Data.datetime}`)
 
   // handle calendar date
   const handleSelectedDate = (selectedDay: Date) => {
@@ -34,18 +37,20 @@ const Ui = () => {
   useEffect(() => {
     const site_DataCopyDate = { ...site_Data, datetime: selectedDay }
     setSite_data(site_DataCopyDate)
-    console.log(`-- UIpremier rendu selected date : ${site_DataCopyDate.datetime.toJSON()}`)
+    // console.log(`-- UI rendu1 site_DataCopyDate : ${site_DataCopyDate.datetime}`)
+    // console.log(`-- UI rendu1 [site_data] ${site_Data.datetime}`)
 
     return () => {
-      console.log(`-- UI date : ${selectedDay.toJSON()}`)
+      // console.log(`-- UI rendu2 site_DataCopyDate : ${site_DataCopyDate.datetime}`)
+      // console.log(`-- UI rendu2 [site_data] ${site_Data.datetime}`)
     }
   }, [selectedDay])
   // ECOUTE SITE DATA
   useEffect(() => {
-    console.log(`.. UI premier rendu sITE DATA : ${site_Data.datetime.toJSON()}`)
+    // console.log(`.. UI rendu1 rendu [site_data] : ${site_Data.datetime}`)
 
     return () => {
-      console.log(`.. UI second rendu selected date : ${selectedDay.toJSON()}`)
+      // console.log(`.. UI rendu1 rendu [site_data] : ${site_Data.datetime}`)
     }
   }, [site_Data])
 

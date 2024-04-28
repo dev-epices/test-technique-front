@@ -3,6 +3,8 @@ import { DataPoint, Site } from '../data/types'
 import { sum } from '../Utils/sum'
 import SitesList from './SitesList'
 
+import { Experimental } from './Experimental'
+
 type DayToShow = {
   site_id: number
   datetime: Date
@@ -147,6 +149,9 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
             <p>
               <span className="font-bold">datetime :</span> {datetime.toLocaleDateString()}
             </p>
+            <div className="p-4 border">
+              <Experimental datetime={datetime} site_id={site_id} />
+            </div>
           </div>
         </div>
       </div>
