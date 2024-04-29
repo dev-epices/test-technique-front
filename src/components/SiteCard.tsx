@@ -16,7 +16,7 @@ const SiteCard = ({ site }: SiteCardProps) => {
   return (
     <>
       <a
-        key={uuidv4()}
+        // key={uuidv4()}
         href="#"
         className="flex bg-white rounded overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px] hover:transition-all ease-in-out delay-150 duration-300 hover:bg-slate-50"
       >
@@ -35,9 +35,9 @@ const SiteCard = ({ site }: SiteCardProps) => {
               <p>Start date | {site.start_date.toLocaleDateString()}</p>
             </div>
 
-            <Status key={uuidv4()} site_id={site.id} datetime={calendarDate.datetime} />
+            <Status site_id={site.id} datetime={calendarDate.datetime} />
             <ul className="text-xs text-slate-400 w-full">
-              <Experimental key={uuidv4()} site_id={site.id} datetime={calendarDate.datetime} />
+              <Experimental site_id={site.id} datetime={calendarDate.datetime} />
             </ul>
           </div>
         </div>

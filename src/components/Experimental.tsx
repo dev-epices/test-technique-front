@@ -39,19 +39,19 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
       <>
         <ul key={uuidv4()} className="text-slate-500">
           <Datetime
-            key={uuidv4()}
+            // key={uuidv4()}
             production={prod.production}
             reference={prod.reference}
             datetime={prod.datetime}
           />
           <Production
-            key={uuidv4()}
+            // key={uuidv4()}
             production={prod.production}
             reference={prod.reference}
             datetime={prod.datetime}
           />
           <Reference
-            key={uuidv4()}
+            // key={uuidv4()}
             production={prod.production}
             reference={prod.reference}
             datetime={prod.datetime}
@@ -66,8 +66,8 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
       <div className=" w-full text-slate-800 border-b pb-1 mb-1">
         → {datetime.toLocaleDateString()}
       </div>
-      <div key={uuidv4()} className="flex justify-between gap-8">
-        <ul key={uuidv4()}>
+      <div className="flex justify-between gap-8">
+        <ul>
           <li>Hour</li>
           <li>Prod. (kw/h?)</li>
           <li>Réf. (kw/h?)</li>

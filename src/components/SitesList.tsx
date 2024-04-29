@@ -13,9 +13,9 @@ function SitesList() {
   const sites = useSite()
   return (
     <>
-      {sites.map((site) => (
-        <div key={uuidv4()}>
-          <SiteCard key={uuidv4()} site={site} />
+      {sites.map((site, index) => (
+        <div key={index}>
+          <SiteCard site={site} />
         </div>
       ))}
     </>

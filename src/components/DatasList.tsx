@@ -13,21 +13,19 @@ type DayToShow = {
 }
 
 const DatasList = ({ site_id, datetime }: DayToShow) => {
-  const [dataPoint, setDataPoint] = useState<DataPoint[]>()
+  // const [dataPoint, setDataPoint] = useState<DataPoint[]>()
   const [dataSite, setDataSite] = useState<Site[]>()
   const [sitesLength, setSitesLength] = useState(1)
 
-  console.log(dataPoint)
-
   useEffect(() => {
-    fetchData(site_id, datetime)
+    // fetchData(site_id, datetime)
     fetchSitesForIds()
   }, [datetime])
 
-  const fetchData = useCallback(async (id: number, date: Date) => {
-    const data = await fetchDataForDay(id, date)
-    setDataPoint(data)
-  }, [])
+  // const fetchData = useCallback(async (id: number, date: Date) => {
+  //   const data = await fetchDataForDay(id, date)
+  //   setDataPoint(data)
+  // }, [])
 
   const fetchSitesForIds = useCallback(async () => {
     const dataSitesLength = (await fetchSites()).length
@@ -120,7 +118,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
         /** grid layout for sites column
          * */ className="grid sm:grid-cols-1 2xl:grid-cols-2 gap-4 mt-16 lg:mt-0"
       >
-        <SitesList key={uuidv4()} />
+        <SitesList />
       </div>
     </div>
   )
