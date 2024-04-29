@@ -44,21 +44,10 @@ const SiteCard = ({ site }: SiteCardProps) => {
               <p className="">Max Power: {site.max_power}</p>
               <p>Start date | {site.start_date.toLocaleDateString()}</p>
             </div>
-            <div className=" bg-white w-full mb-2 flex flex-col mt-2 rounded-2xl p-4  hover:transition-all">
-              <div className="flex flex-wrap  gap-4 items-center py-2">
-                <div className="text-lime-700 space-x-2 font-thin text-5xl">
-                  <span>{txProd(site.max_power, 500).toFixed(1)}</span>
-                  <span className="text-xs font-semibold">%</span>
-                </div>
-                <div className="flex flex-col text-xs">
-                  <span className=" uppercase font-bold">Taux de production</span>
-                  <span className="">( Prods × Prods ref ) / 100 </span>
-                </div>
-              </div>
-            </div>
+
             <Status site_id={site.id} datetime={calendarDate.datetime} />
-            <SiteCardDatas id={site.id} />
-            <ul className="text-xs text-slate-400">
+            {/* <SiteCardDatas id={site.id} /> */}
+            <ul className="text-xs text-slate-400 w-full">
               <Experimental site_id={site.id} datetime={calendarDate.datetime} />
             </ul>
           </div>

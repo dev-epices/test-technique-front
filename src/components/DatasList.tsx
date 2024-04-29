@@ -1,7 +1,8 @@
-// import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { DataPoint, Site } from '../data/types'
 import { sum } from '../Utils/sum'
 import SitesList from './SitesList'
+import { fetchSites, fetchDataForDay } from '../data/fetch'
 
 import { Experimental } from './Experimental'
 
@@ -11,6 +12,29 @@ type DayToShow = {
 }
 
 const DatasList = ({ site_id, datetime }: DayToShow) => {
+  const [dataPoint, setDataPoint] = useState<DataPoint[]>()
+
+  useEffect(() => {
+    fetchData(site_id, datetime)
+  }, [datetime])
+
+  const fetchData = useCallback(async (id: number, date: Date) => {
+    const data = await fetchDataForDay(id, date)
+    setDataPoint(data)
+  }, [])
+
+  // calcule la bonne somme pour un id, échoue si pas de données
+  const allProdsThisDay = () => {
+    const all =
+      dataPoint !== undefined
+        ? dataPoint.filter((e) => e.datetime.toLocaleDateString() === datetime.toLocaleDateString())
+        : null
+    const sum = all !== null ? all.map((e) => e.production).reduce((a, b) => a + b) : null
+    console.log(`all ${site_id}------ ${all?.map((e) => e.production)}-------${sum}`)
+    return sum
+  }
+
+  allProdsThisDay()
   //------- get prod for site at a day
   // const getData = useData(1234, new Date(2024, 3, 1, 9))
 
@@ -134,7 +158,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
               <span className="text-xs font-semibold">unit</span>
             </div>
             <span className="text-xs text-slate-500">
-              Somme de la production cumulée sur l’ensemble des sites
+              {datetime.toLocaleDateString()}Somme de la production cumulée sur l’ensemble des sites
             </span>
           </div>
           <div
@@ -147,7 +171,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
               <span className="font-bold">site_id :</span> <span>{site_id}</span>
             </p>
             <p>
-              <span className="font-bold">datetime :</span> {datetime.toLocaleDateString()}
+              <span className="font-bold">datetimmme :</span> {datetime.toLocaleDateString()}
             </p>
             <div className="p-4 border">
               <Experimental datetime={datetime} site_id={site_id} />
@@ -157,7 +181,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
       </div>
       <div
         /** grid layout for sites column
-         * */ className="grid sm:grid-cols-1 2xl:grid-cols-2 gap-4"
+         * */ className="grid sm:grid-cols-1 2xl:grid-cols-2 gap-4 mt-16 lg:mt-0"
       >
         <SitesList />
       </div>

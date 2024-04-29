@@ -56,10 +56,10 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
 
   return (
     <>
-      <div
-        className="flex justify-between gap-8
-        "
-      >
+      <div className=" w-full text-slate-800 border-b pb-1 mb-1">
+        → {datetime.toLocaleDateString()}
+      </div>
+      <div className="flex justify-between gap-8">
         <ul>
           <li>Hour</li>
           <li>Prod. (kw/h?)</li>
