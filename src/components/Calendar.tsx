@@ -14,6 +14,13 @@ export default function Calendar({ onSelectDate }: Props) {
     onSelectDate(day)
   }
 
+  const disabledDays = [
+    // new Date(2024, 5, 10),
+    // new Date(2024, 5, 12),
+    // new Date(2024, 5, 20),
+    { from: new Date(2024, 3, 5), to: new Date(2024, 3, 30) },
+  ]
+
   const footer = selectedDay ? (
     <p>You selected {selectedDay.toDateString()}.</p>
   ) : (
@@ -23,10 +30,12 @@ export default function Calendar({ onSelectDate }: Props) {
   return (
     <DayPicker
       mode="single"
+      defaultMonth={new Date(2024, 3)}
       selected={selectedDay}
       onSelect={setSelectedDay}
       footer={footer}
       onDayClick={handleDayClick}
+      disabled={disabledDays}
       // style={{ caption: { color: 'red' } }}
     />
   )
