@@ -30,15 +30,19 @@ const SiteCard = ({ site }: SiteCardProps) => {
             <div className="w-full flex-none text-xs font-medium text-slate-400 border-b pb-4">
               <p className=" line-clamp-1"> {site.address}</p>
             </div>
-            <div className="border-b pb-2 flex space-x-2 justify-between w-full py-2 text-xs font-medium text-slate-400">
-              <p className="">Max Power: {site.max_power}</p>
-              <p>Start date | {site.start_date.toLocaleDateString()}</p>
+            <Status site_id={site.id} datetime={calendarDate.datetime} />
+            <div className=" px-2  mb-1 flex space-x-2 justify-between w-full py-1 text-sm font-semibold text-slate-600">
+              <p className="">
+                {site.max_power}{' '}
+                <span className="font-normal text-slate-400 text-xs">Max Power</span>
+              </p>
+              <p>
+                <span className="font-normal text-slate-400 text-xs">Started on</span>{' '}
+                {site.start_date.toLocaleDateString('fr-FR', { dateStyle: 'medium' })}
+              </p>
             </div>
 
-            <Status site_id={site.id} datetime={calendarDate.datetime} />
-            <ul className="text-xs text-slate-400 w-full">
-              <Experimental site_id={site.id} datetime={calendarDate.datetime} />
-            </ul>
+            <Experimental site_id={site.id} datetime={calendarDate.datetime} />
           </div>
         </div>
       </a>

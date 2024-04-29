@@ -12,7 +12,7 @@ export const Production = ({ production }: Props) => {
     <>
       <li className="flex flex-col">
         {/* <span>{datetime.getHours()}h</span> */}
-        <span className="">{production}</span>
+        <span className=" font-bold">{production}</span>
         {/* <span>{reference} kw/h?</span> */}
       </li>
     </>
@@ -22,7 +22,7 @@ export const Reference = ({ reference }: Props) => {
   return (
     <>
       <li>
-        <span>{reference}</span>
+        <span className="">{reference}</span>
       </li>
     </>
   )
