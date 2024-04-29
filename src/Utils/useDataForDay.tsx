@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { fetchSites, fetchDataForDay } from '../data/fetch'
-import { DataPoint, Site } from '../data/types'
+import { fetchDataForDay } from '../data/fetch'
+// import { DataPoint, Site } from '../data/types'
 
 const useDataForDay = (site_id: number, date: Date) => {
   // const [prods, setProds] = useState<DataPoint[]>([])

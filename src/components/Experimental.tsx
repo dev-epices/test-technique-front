@@ -1,13 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import { DataPoint, Site } from '../data/types'
-import useData from '../Utils/useData'
-import Production from './Production'
-import Reference from './Reference'
-import Datetime from './Datetime'
-import { fetchSites, fetchDataForDay } from '../data/fetch'
-import { result } from 'lodash'
-import { useStatus } from '../Utils/useStatus'
+import { DataPoint } from '../data/types'
+import { Production, Reference, Datetime } from './DatasLi'
+import { fetchDataForDay } from '../data/fetch'
+import { v4 as uuidv4 } from 'uuid'
 
 type DayToShow = {
   site_id: number
@@ -39,16 +35,27 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
    * @returns if it exist, return Production component
    */
   const productionData = function () {
-    return dataPoint?.map((prod, index) => (
+    return dataPoint?.map((prod) => (
       <>
-        <ul key={site_id + index} className="text-slate-500">
-          <Datetime datetime={prod.datetime} />
-          <Production
+        <ul key={uuidv4()} className="text-slate-500">
+          <Datetime
+            key={uuidv4()}
             production={prod.production}
             reference={prod.reference}
             datetime={prod.datetime}
           />
-          <Reference reference={prod.reference} />
+          <Production
+            key={uuidv4()}
+            production={prod.production}
+            reference={prod.reference}
+            datetime={prod.datetime}
+          />
+          <Reference
+            key={uuidv4()}
+            production={prod.production}
+            reference={prod.reference}
+            datetime={prod.datetime}
+          />
         </ul>
       </>
     ))
@@ -59,15 +66,15 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
       <div className=" w-full text-slate-800 border-b pb-1 mb-1">
         → {datetime.toLocaleDateString()}
       </div>
-      <div className="flex justify-between gap-8">
-        <ul>
+      <div key={uuidv4()} className="flex justify-between gap-8">
+        <ul key={uuidv4()}>
           <li>Hour</li>
           <li>Prod. (kw/h?)</li>
           <li>Réf. (kw/h?)</li>
         </ul>
 
         {productionData()}
-      </div>{' '}
+      </div>
     </>
   )
 }

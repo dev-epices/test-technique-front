@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { fetchSites, fetchDataForDay } from '../data/fetch'
-import { DataPoint, Site } from '../data/types'
+import { fetchDataForDay } from '../data/fetch'
+import { DataPoint } from '../data/types'
 
 const useData = (site_id: number, date: Date) => {
   const [prods, setProds] = useState<DataPoint[]>([])
-  const [query, setQuery] = useState({ date })
+  // const [query, setQuery] = useState({ date })
   // const [prods, setProds] = useState<number[]>([])
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const useData = (site_id: number, date: Date) => {
       // setProds(result)
     }
     fetchProds()
-  }, [query])
+  }, [])
   return (
     <>
       <ul className="flex space-x-2">

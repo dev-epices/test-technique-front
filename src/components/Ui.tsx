@@ -1,10 +1,10 @@
 // import React from 'react'
 import DatasList from './DatasList'
 import Calendar from './Calendar'
-import { DataPoint, Site } from '../data/types'
-import { createContext, useEffect, useState } from 'react'
+import { DataPoint } from '../data/types'
+import { useEffect, useState } from 'react'
 import { UiContext } from '../Utils/UiContext'
-import useData from '../Utils/useData'
+// import useData from '../Utils/useData'
 
 const Ui = () => {
   const siteToShow: { site_id: number } = {

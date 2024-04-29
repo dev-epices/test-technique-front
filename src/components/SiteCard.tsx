@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { DataPoint, Site } from '../data/types'
-import useData from '../Utils/useData'
-import { UiContext, useUiContext } from '../Utils/UiContext'
-import { useStatus } from '../Utils/useStatus'
+// import React, { useContext, useEffect, useState } from 'react'
+import { Site } from '../data/types'
+import { useUiContext } from '../Utils/UiContext'
 import Status from '../components/Status'
-import SiteCardDatas from './SiteCardDatas'
 import { Experimental } from './Experimental'
+import { v4 as uuidv4 } from 'uuid'
 
 interface SiteCardProps {
   site: Site
@@ -14,19 +12,11 @@ interface SiteCardProps {
 
 const SiteCard = ({ site }: SiteCardProps) => {
   const calendarDate = useUiContext() // => useUiContext custom hook to be sure calendarDate is not undefined
-  const changeDate = calendarDate
-  // console.log(`calendarDate ${calendarDate}`)
-
-  // calcul du taux de production
-  //=> (toutes les productions × toutes les reférences)/100
-  const txProd = (totalProds: number, totalRefs: number) => {
-    let txProdCalc = (totalProds * 100) / totalRefs
-    return txProdCalc
-  }
 
   return (
     <>
       <a
+        key={uuidv4()}
         href="#"
         className="flex bg-white rounded overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px] hover:transition-all ease-in-out delay-150 duration-300 hover:bg-slate-50"
       >
@@ -45,10 +35,9 @@ const SiteCard = ({ site }: SiteCardProps) => {
               <p>Start date | {site.start_date.toLocaleDateString()}</p>
             </div>
 
-            <Status site_id={site.id} datetime={calendarDate.datetime} />
-            {/* <SiteCardDatas id={site.id} /> */}
+            <Status key={uuidv4()} site_id={site.id} datetime={calendarDate.datetime} />
             <ul className="text-xs text-slate-400 w-full">
-              <Experimental site_id={site.id} datetime={calendarDate.datetime} />
+              <Experimental key={uuidv4()} site_id={site.id} datetime={calendarDate.datetime} />
             </ul>
           </div>
         </div>

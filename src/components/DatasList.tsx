@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { DataPoint, Site } from '../data/types'
-import { sum } from '../Utils/sum'
+// import { sum } from '../Utils/sum'
 import SitesList from './SitesList'
 import { fetchSites, fetchDataForDay } from '../data/fetch'
 
-import { Experimental } from './Experimental'
+// import { Experimental } from './Experimental'
+import { v4 as uuidv4 } from 'uuid'
 
 type DayToShow = {
   site_id: number
@@ -13,9 +14,14 @@ type DayToShow = {
 
 const DatasList = ({ site_id, datetime }: DayToShow) => {
   const [dataPoint, setDataPoint] = useState<DataPoint[]>()
+  const [dataSite, setDataSite] = useState<Site[]>()
+  const [sitesLength, setSitesLength] = useState(1)
+
+  console.log(dataPoint)
 
   useEffect(() => {
     fetchData(site_id, datetime)
+    fetchSitesForIds()
   }, [datetime])
 
   const fetchData = useCallback(async (id: number, date: Date) => {
@@ -23,97 +29,19 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
     setDataPoint(data)
   }, [])
 
-  // calcule la bonne somme pour un id, échoue si pas de données
-  // const allProdsThisDay = () => {
-  //   const all =
-  //     dataPoint !== undefined
-  //       ? dataPoint.filter((e) => e.datetime.toLocaleDateString() === datetime.toLocaleDateString())
-  //       : null
-  //   const sum = all !== null ? all.map((e) => e.production).reduce((a, b) => a + b) : null
-  //   console.log(`all ${site_id}------ ${all?.map((e) => e.production)}-------${sum}`)
-  //   return sum
+  const fetchSitesForIds = useCallback(async () => {
+    const dataSitesLength = (await fetchSites()).length
+    const getDataSites = await fetchSites()
+    setSitesLength(dataSitesLength)
+    setDataSite(getDataSites)
+  }, [])
+
+  // recupère tous les ids
+  // const allIds = dataSite?.map((e) => e.id)
+
+  // const allProdsForId = async (id: number) => {
+  //   const res = await fetchData(id, datetime)
   // }
-
-  // allProdsThisDay()
-  //------- get prod for site at a day
-  // const getData = useData(1234, new Date(2024, 3, 1, 9))
-
-  // Hard datas uses to calculate sum of all sites production
-  const staticDatas: Array<{ site_id: number; data: Array<DataPoint> }> = [
-    {
-      site_id: 1234,
-      data: [
-        {
-          datetime: new Date(2024, 3, 1, 9),
-          production: 20,
-          reference: 20,
-        },
-        {
-          datetime: new Date(2024, 3, 1, 12),
-          production: 80,
-          reference: 100,
-        },
-        {
-          datetime: new Date(2024, 3, 1, 15),
-          production: 44,
-          reference: 100,
-        },
-        {
-          datetime: new Date(2024, 3, 1, 18),
-          production: 20,
-          reference: 20,
-        },
-      ],
-    },
-
-    {
-      site_id: 310,
-      data: [
-        {
-          datetime: new Date(2024, 3, 1, 9),
-          production: 0,
-          reference: 120,
-        },
-        {
-          datetime: new Date(2024, 3, 1, 12),
-          production: 0,
-          reference: 1000,
-        },
-        {
-          datetime: new Date(2024, 3, 1, 15),
-          production: 0,
-          reference: 800,
-        },
-        {
-          datetime: new Date(2024, 3, 1, 18),
-          production: 0,
-          reference: 120,
-        },
-      ],
-    },
-
-    {
-      site_id: 8563,
-      data: [
-        {
-          datetime: new Date(2024, 3, 1, 9),
-          production: 110,
-          reference: 120,
-        },
-
-        {
-          datetime: new Date(2024, 3, 2, 9),
-          production: 8,
-          reference: 20,
-        },
-        {
-          datetime: new Date(2024, 3, 2, 12),
-          production: 410,
-          reference: 500,
-        },
-      ],
-    },
-  ]
 
   const cumulProd = (): React.ReactNode => {
     /**
@@ -121,22 +49,31 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
      *
      * @returns A number.
      */
-    const cumulProdforeEachSite = (datas: Array<{ site_id: number; data: Array<DataPoint> }>) => {
-      let arrayToCalculate = []
-      for (let i = 0; i < datas.length; i++) {
+    const cumulProdforeEachSite = () => {
+      // let arrayToCalculate = [0]
+      let maxPowers = [0]
+      // const selectByDate = dataPoint?.filter((e) => e.datetime.getDate() === datetime.getDate())
+      // const allProdsByDate = selectByDate?.map((e) => e.production)
+      // console.log(`allProdsBydate ===== ${allProdsByDate}`)
+      dataSite !== undefined ? (maxPowers = dataSite.map((e) => e.max_power)) : null
+      // const maxProds: number[] | undefined = dataSite?.map(e=>e.max_power)
+      // let lengthNow = sitesLength
+      // for (let i = 0; i < datas.length; i++) {
+      for (let i = 0; i < sitesLength; i++) {
         // console.log(datas[i])
-        arrayToCalculate.push(
-          datas[i].data
-            .map((e) => e.production)
-            .reduce((a, b) => {
-              return a + b
-            })
-        )
+        // arrayToCalculate.push(
+        //   datas[i].data
+        //     .map((e) => e.production)
+        //     .reduce((a, b) => {
+        //       return a + b
+        //     })
+        // )
       }
-      return sum(arrayToCalculate)
+      // return sum(arrayToCalculate)
+      return maxPowers.reduce((a, b) => a + b)
     }
 
-    return cumulProdforeEachSite(staticDatas)
+    return cumulProdforeEachSite()
     // return cumulProdforeEachSite(getData)
   }
 
@@ -171,10 +108,10 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
               <span className="font-bold">site_id :</span> <span>{site_id}</span>
             </p>
             <p>
-              <span className="font-bold">datetimmme :</span> {datetime.toLocaleDateString()}
+              <span className="font-bold">datetime :</span> {datetime.toLocaleDateString()}
             </p>
             <div className="p-4 border">
-              <Experimental datetime={datetime} site_id={site_id} />
+              {/* <Experimental datetime={datetime} site_id={site_id} /> */}
             </div>
           </div>
         </div>
@@ -183,7 +120,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
         /** grid layout for sites column
          * */ className="grid sm:grid-cols-1 2xl:grid-cols-2 gap-4 mt-16 lg:mt-0"
       >
-        <SitesList />
+        <SitesList key={uuidv4()} />
       </div>
     </div>
   )

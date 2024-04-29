@@ -18,3 +18,23 @@ export const Production = ({ production }: Props) => {
     </>
   )
 }
+export const Reference = ({ reference }: Props) => {
+  return (
+    <>
+      <li>
+        <span>{reference}</span>
+      </li>
+    </>
+  )
+}
+export const Datetime = ({ datetime }: Props) => {
+  return (
+    <>
+      <li>
+        <span>{datetime.getHours()}h</span>
+        {/* <span>{production} kw/h?</span> */}
+        {/* <span>{reference} kw/h?</span> */}
+      </li>
+    </>
+  )
+}

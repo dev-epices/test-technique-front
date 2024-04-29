@@ -1,5 +1,5 @@
-import React from 'react'
-import { DataPoint } from '../data/types'
+// import React from 'react'
+// import { DataPoint } from '../data/types'
 
 interface Props {
   // id: number

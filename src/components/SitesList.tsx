@@ -5,15 +5,17 @@
 // import useData from '../Utils/useData'
 import useSite from '../Utils/useSite'
 import SiteCard from './SiteCard'
+import { v4 as uuidv4 } from 'uuid'
+
 // import { UiContext, useUiContext } from '../Utils/UiContext'
 
 function SitesList() {
   const sites = useSite()
   return (
     <>
-      {sites.map((site, index) => (
-        <div key={index}>
-          <SiteCard site={site} />
+      {sites.map((site) => (
+        <div key={uuidv4()}>
+          <SiteCard key={uuidv4()} site={site} />
         </div>
       ))}
     </>

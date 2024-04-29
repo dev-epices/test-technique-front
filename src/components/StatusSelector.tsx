@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 export const StatusSelector = function (ratio: number) {
   //  const dataLength = dataPoint?.length
@@ -10,7 +10,7 @@ export const StatusSelector = function (ratio: number) {
     rgbBgColor: {},
   }
 
-  let message = <div className="bg-lime-700 min-h-3">NULL</div>
+  // let message = <div className="bg-lime-700 min-h-3">NULL</div>
 
   if (ratio === 0) {
     status.message = 'A L’ARRÊT'

@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import { DataPoint, Site } from '../data/types'
+import { createContext, useContext } from 'react'
+import { DataPoint } from '../data/types'
 
 // export const UiContext = createContext(undefined)
 export const UiContext = createContext<DataPoint | undefined>(undefined)

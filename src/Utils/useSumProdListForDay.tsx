@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { fetchSites, fetchDataForDay } from '../data/fetch'
-import { DataPoint, Site } from '../data/types'
+import { fetchDataForDay } from '../data/fetch'
+// import { DataPoint, Site } from '../data/types'
 import { sum } from '../Utils/sum'
 /**
  * Flo: Calculate the prod for a given id and a given day
