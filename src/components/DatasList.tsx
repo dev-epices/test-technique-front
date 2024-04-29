@@ -24,17 +24,17 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
   }, [])
 
   // calcule la bonne somme pour un id, échoue si pas de données
-  const allProdsThisDay = () => {
-    const all =
-      dataPoint !== undefined
-        ? dataPoint.filter((e) => e.datetime.toLocaleDateString() === datetime.toLocaleDateString())
-        : null
-    const sum = all !== null ? all.map((e) => e.production).reduce((a, b) => a + b) : null
-    console.log(`all ${site_id}------ ${all?.map((e) => e.production)}-------${sum}`)
-    return sum
-  }
+  // const allProdsThisDay = () => {
+  //   const all =
+  //     dataPoint !== undefined
+  //       ? dataPoint.filter((e) => e.datetime.toLocaleDateString() === datetime.toLocaleDateString())
+  //       : null
+  //   const sum = all !== null ? all.map((e) => e.production).reduce((a, b) => a + b) : null
+  //   console.log(`all ${site_id}------ ${all?.map((e) => e.production)}-------${sum}`)
+  //   return sum
+  // }
 
-  allProdsThisDay()
+  // allProdsThisDay()
   //------- get prod for site at a day
   // const getData = useData(1234, new Date(2024, 3, 1, 9))
 

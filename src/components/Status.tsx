@@ -5,6 +5,7 @@ import { UiContext, useUiContext } from '../Utils/UiContext'
 import { useStatus } from '../Utils/useStatus'
 import { fetchSites, fetchDataForDay } from '../data/fetch'
 import { BsDisplay } from 'react-icons/bs'
+import { StatusSelector } from './StatusSelector'
 
 type DayToShow = {
   site_id: number
@@ -88,7 +89,7 @@ const Status = ({ site_id, datetime }: DayToShow) => {
           A L’ARRÊT
         </div>
       )
-    } else if (ratio >= 1 && ratio < 69) {
+    } else if (ratio >= 1 && ratio <= 50) {
       message = (
         <div style={stylesRoots} className=" bg-teal-600 min-h-3">
           STATUS DÉGRADÉ
@@ -115,7 +116,10 @@ const Status = ({ site_id, datetime }: DayToShow) => {
       <div className=" w-full my-4 bg-slate-100 rounded-2xl">
         <div className=" bg-white  rounded-2xl p-4  hover:transition-all">
           <div className="grid grid-cols-3 gap-4 items-center py-2">
-            <div className="col-span-2 sm:col-span-3 lg:col-span-2 2xl:col-span-3 text-lime-700 space-x-2 font-thin text-5xl ">
+            <div
+              style={StatusSelector(statusCalc()).rgbColor}
+              className="col-span-2 sm:col-span-3 lg:col-span-2 2xl:col-span-3 space-x-2 font-thin text-5xl "
+            >
               {/* <span>{txProd(site.max_power, 500).toFixed(1)}</span> */}
               <div className="flex gap-6 items-center">
                 <div>
@@ -128,8 +132,24 @@ const Status = ({ site_id, datetime }: DayToShow) => {
                 </div>
               </div>
             </div>
+            <div
+              style={StatusSelector(statusCalc()).rgbBgColor}
+              className=" py-2 px-4 text-white rounded-xl h-full"
+            >
+              <p className="flex flex-col text-[0.5rem] tracking-widest">
+                <span className=" opacity-60 font-medium">STATUS</span>
+                {isLoading ? (
+                  <span className=" text-lg font-light">Loading...</span>
+                ) : (
+                  <span className=" text-lg font-light leading-none opacity-100">
+                    {StatusSelector(statusCalc()).message}
+                  </span>
+                )}
+                {/* <span className=" text-lg font-light">{StatusSelector(statusCalc()).message}</span> */}
+              </p>
+            </div>
 
-            <div className="col-span-1 sm:col-span-3 lg:col-span-1 2xl:col-span-3  min-h-12 flex flex-col justify-center">
+            {/* <div className="col-span-1 sm:col-span-3 lg:col-span-1 2xl:col-span-3  min-h-12 flex flex-col justify-center">
               {isLoading ? (
                 <div style={stylesRoots} className="border bg-slate-400">
                   Loading...
@@ -137,7 +157,7 @@ const Status = ({ site_id, datetime }: DayToShow) => {
               ) : (
                 statusChoose(statusCalc())
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
