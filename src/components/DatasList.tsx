@@ -84,7 +84,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
           /** first bloc grid layout - 1 column on mobile devices
            *
            */
-          className="px-3 sm:px-0 rounded-xl mb-4 grid lg:grid-cols-3 *:border *:dark:border-0 gap-4 *:rounded-xl  *:bg-white *:dark:bg-slate-900  h-60 bg-gradient-to-b from-slate-100 via-slate-100 dark:from-black dark:via-black"
+          className="px-3 sm:px-0 rounded-xl mb-4 grid lg:grid-cols-3 *:border *:dark:border-0 gap-4 *:rounded-xl  *:bg-white *:dark:bg-slate-900 bg-gradient-to-b from-slate-100 via-slate-100 dark:from-black dark:via-black"
         >
           <div
             /** first column, full width on mobile devices
