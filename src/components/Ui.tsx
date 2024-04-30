@@ -4,7 +4,7 @@ import Calendar from './Calendar'
 import { DataPoint } from '../data/types'
 import { useEffect, useState } from 'react'
 import { UiContext } from '../Utils/UiContext'
-import { ModeToggle } from './mode-toggle'
+// import { ModeToggle } from './mode-toggle'
 // import useData from '../Utils/useData'
 
 const Ui = () => {

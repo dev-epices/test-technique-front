@@ -3,7 +3,7 @@ import { Site } from '../data/types'
 import { useUiContext } from '../Utils/UiContext'
 import Status from '../components/Status'
 import { Experimental } from './Experimental'
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
 
 interface SiteCardProps {
   site: Site

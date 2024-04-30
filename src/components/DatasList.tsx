@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { DataPoint, Site } from '../data/types'
+import { Site } from '../data/types'
 // import { sum } from '../Utils/sum'
 import SitesList from './SitesList'
-import { fetchSites, fetchDataForDay } from '../data/fetch'
+import { fetchSites } from '../data/fetch'
 
 // import { Experimental } from './Experimental'
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
 import { ModeToggle } from './mode-toggle'
 
 type DayToShow = {
@@ -22,6 +22,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
     // fetchData(site_id, datetime)
     fetchSitesForIds()
   }, [datetime])
+  console.log(site_id)
 
   // const fetchData = useCallback(async (id: number, date: Date) => {
   //   const data = await fetchDataForDay(id, date)
