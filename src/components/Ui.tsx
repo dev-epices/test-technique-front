@@ -4,6 +4,7 @@ import Calendar from './Calendar'
 import { DataPoint } from '../data/types'
 import { useEffect, useState } from 'react'
 import { UiContext } from '../Utils/UiContext'
+import { ModeToggle } from './mode-toggle'
 // import useData from '../Utils/useData'
 
 const Ui = () => {
@@ -58,7 +59,7 @@ const Ui = () => {
     // <UiContext.Provider value={selectedDay}>
     <UiContext.Provider value={site_Data}>
       <div className="flex flex-col sm:flex-row gap-4">
-        <div className="sticky top-0 bg-white z-50 h-full">
+        <div className="sticky top-0  z-50 h-full bg-white dark:bg-slate-900">
           <Calendar onSelectDate={handleSelectedDate} />
         </div>
         <DatasList site_id={siteToShow.site_id} datetime={selectedDay} />

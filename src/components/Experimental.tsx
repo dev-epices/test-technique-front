@@ -37,7 +37,7 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
   const productionData = function () {
     return dataPoint?.map((prod) => (
       <>
-        <ul key={uuidv4()} className="text-slate-500 *:pb-1">
+        <ul key={uuidv4()} className="text-slate-500 dark:text-slate-300 *:pb-1">
           <Datetime
             // key={uuidv4()}
             production={prod.production}
@@ -63,7 +63,7 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
 
   return (
     <>
-      <div className=" bg-gray-200 px-2 py-1 w-full text-slate-800 border-b pb-1 mb-1 text-xs font-bold">
+      <div className=" bg-gray-200 dark:bg-slate-800 dark:text-slate-400 px-2 py-1 w-full text-slate-800 pb-1 mb-1 text-xs font-bold">
         {/* <span className=" font-medium text-slate-500">↓</span> */}
         <span>{datetime.toLocaleDateString('fr-FR', { dateStyle: 'long' })}</span>{' '}
       </div>

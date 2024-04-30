@@ -18,20 +18,22 @@ const SiteCard = ({ site }: SiteCardProps) => {
       <a
         // key={uuidv4()}
         href="#"
-        className="flex bg-white rounded overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px] hover:transition-all ease-in-out delay-150 duration-300 hover:bg-slate-50"
+        className="flex flex-col sm:flex-row bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px] hover:transition-all ease-in-out delay-150 duration-300 hover:bg-slate-50"
       >
-        <div className=" transition-all aspect-square flex-none w-24 md:w-48 lg:w-60 xl:w-80">
-          <img src={site.picture} className=" w-full h-full object-cover" loading="lazy" />
+        <div className=" transition-all sm:aspect-square flex-none w-full sm:w-24 md:w-48 lg:w-60 xl:w-80">
+          <img src={site.picture} className=" w-full h-40 sm:h-full object-cover" loading="lazy" />
         </div>
         <div className="flex-auto p-6">
           <div className="flex flex-wrap">
-            <h1 className="flex-auto w-[25%] text-lg font-semibold text-slate-900">{site.name}</h1>
+            <h1 className="flex-auto w-[25%] text-lg font-semibold text-slate-900 dark:text-slate-300">
+              {site.name}
+            </h1>
             <div className="text-xs text-slate-400">{site.id}</div>
-            <div className="w-full flex-none text-xs font-medium text-slate-400 border-b pb-4">
+            <div className="w-full flex-none text-xs font-medium text-slate-400 pb-4">
               <p className=" line-clamp-1"> {site.address}</p>
             </div>
             <Status site_id={site.id} datetime={calendarDate.datetime} />
-            <div className=" px-2  mb-1 flex space-x-2 justify-between w-full py-1 text-sm font-semibold text-slate-600">
+            <div className=" px-2  mb-1 flex space-x-2 justify-between w-full py-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
               <p className="">
                 {site.max_power}{' '}
                 <span className="font-normal text-slate-400 text-xs">Max Power</span>

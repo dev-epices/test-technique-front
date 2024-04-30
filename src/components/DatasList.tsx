@@ -6,6 +6,7 @@ import { fetchSites, fetchDataForDay } from '../data/fetch'
 
 // import { Experimental } from './Experimental'
 import { v4 as uuidv4 } from 'uuid'
+import { ModeToggle } from './mode-toggle'
 
 type DayToShow = {
   site_id: number
@@ -82,7 +83,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
           /** first bloc grid layout - 1 column on mobile devices
            *
            */
-          className="rounded-xl mb-4 grid lg:grid-cols-3 *:border gap-4 *:rounded-xl  *:bg-white  h-60 bg-gradient-to-b from-slate-200 via-slate-100"
+          className="px-3 sm:px-0 rounded-xl mb-4 grid lg:grid-cols-3 *:border *:dark:border-0 gap-4 *:rounded-xl  *:bg-white *:dark:bg-slate-900  h-60 bg-gradient-to-b from-slate-100 via-slate-100 dark:from-black dark:via-black"
         >
           <div
             /** first column, full width on mobile devices
@@ -102,21 +103,21 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
              */
             className="col-span-1 lg:col-span-2 p-4 text-slate-400 text-xs"
           >
-            <p>
+            <div className="mb-4 absolute right-2">
+              <ModeToggle />
+            </div>
+            {/* <p className="mt-10">
               <span className="font-bold">site_id :</span> <span>{site_id}</span>
             </p>
             <p>
               <span className="font-bold">datetime :</span> {datetime.toLocaleDateString()}
-            </p>
-            <div className="p-4 border">
-              {/* <Experimental datetime={datetime} site_id={site_id} /> */}
-            </div>
+            </p> */}
           </div>
         </div>
       </div>
       <div
         /** grid layout for sites column
-         * */ className="grid sm:grid-cols-1 2xl:grid-cols-2 gap-4 mt-16 lg:mt-0"
+         * */ className="px-3 sm:px-0 grid sm:grid-cols-1 2xl:grid-cols-2 gap-4 mt-16 lg:mt-0"
       >
         <SitesList />
       </div>

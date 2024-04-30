@@ -1,12 +1,12 @@
 const Todo = () => {
   return (
     <>
-      <ul>
+      <ul className="dark:border-0 rounded-2xl">
         <p className="font-bold mb-2">Pour chaque jour :</p>
         <li>🟥 Somme de la Production cumulé sur l'ensemble des sites</li>
         <li>🟥 Nombre de sites dans chaques status</li>
       </ul>
-      <ul>
+      <ul className="dark:border-0 rounded-2xl">
         <p className="font-bold mb-2">Pour un site sélectionné :</p>
         <li>✅ la photo et les différentes informations du site (disponibles dans l'objet Site)</li>
         <li>✅ la production cumulée du site</li>
@@ -15,7 +15,7 @@ const Todo = () => {
           production de référence cumulée
         </li>
       </ul>
-      <ul>
+      <ul className="dark:border-0 rounded-2xl">
         <p className="font-bold mb-2">Status du site</p>
         <li>✅ Pas de données (a une date donnée)</li>
         <li>✅ À l’arrêt (prod nullle)</li>

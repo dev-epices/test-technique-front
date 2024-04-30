@@ -50,8 +50,8 @@ const Status = ({ site_id, datetime }: DayToShow) => {
 
   return (
     <>
-      <div className=" w-full my-4 bg-slate-100 rounded-2xl">
-        <div className="border bg-white  rounded-2xl p-4  hover:transition-all">
+      <div className=" w-full my-4 bg-slate-100 dark:bg-slate-900 rounded-2xl">
+        <div className="border dark:border-0 bg-white dark:bg-slate-800  rounded-2xl p-4  hover:transition-all">
           <div className=" grid grid-cols-3 gap-4 items-center py-2">
             <div
               style={StatusSelector(statusCalc()).rgbColor}
@@ -63,7 +63,7 @@ const Status = ({ site_id, datetime }: DayToShow) => {
                   <span>{statusCalc().toFixed(1)}</span>
                   <span className="text-xs font-semibold">%</span>
                 </div>
-                <div className="hidden sm:flex flex-col text-xs">
+                <div className="flex flex-col text-xs">
                   <span className="uppercase font-bold">Tx. de production</span>
                   <span className=" line-clamp-1 ">( Prods × Prods ref ) / 100 </span>
                 </div>
