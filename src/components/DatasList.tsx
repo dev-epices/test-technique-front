@@ -88,15 +88,26 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
         >
           <div
             /** first column, full width on mobile devices
-             * */ className=" flex flex-col border  p-4"
+             * */ className=" flex flex-col border  p-4 justify-between"
           >
+            <div className="text-xs text-slate-400">
+              <p className="">
+                <span className="dark:text-slate-300 text-slate-600 font-bold">
+                  Production cumulée
+                </span>
+              </p>
+              <p>
+                Le{' '}
+                <span className="dark:text-slate-300 text-slate-600">
+                  {datetime.toLocaleDateString('fr-FR', { dateStyle: 'long' })}
+                </span>{' '}
+                sur l'ensemble des sites
+              </p>
+            </div>
             <div className="flex gap-1 text-lime-700 ">
               <span className="font-thin text-5xl">{cumulProd()}</span>
               <span className="text-xs font-semibold">unit</span>
             </div>
-            <span className="text-xs text-slate-500">
-              {datetime.toLocaleDateString()}Somme de la production cumulée sur l’ensemble des sites
-            </span>
           </div>
           <div
             /** secondary column - full width on mobile devices
@@ -104,15 +115,65 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
              */
             className="col-span-1 lg:col-span-2 p-4 text-slate-400 text-xs"
           >
-            <div className="mb-4 absolute right-2">
-              <ModeToggle />
+            <div className="flex gap-4 justify-between">
+              <div className="font-bold ">
+                <p>
+                  <span className="dark:text-slate-300 text-slate-600">
+                    Nombres <br />
+                    de sites
+                  </span>
+                </p>
+                <p className="font-normal">
+                  <span className="dark:text-slate-300 text-slate-600">
+                    {' '}
+                    {datetime.toLocaleDateString('fr-FR', { dateStyle: 'long' })}
+                  </span>
+                  <br />
+                  par status
+                </p>
+              </div>
+              <div id="parent" className="grid grid-cols-4 gap-2 *:rounded-lg">
+                <a
+                  href="#"
+                  className=" bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <div className="flex flex-col justify-center items-center gap-2 p-4">
+                    <span className="text-5xl font-thin">250</span>
+                    <span className=" bg-lime-600 text-white px-2 py-1 rounded-md">OK</span>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  className=" bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <div className="flex flex-col justify-center items-center gap-2 p-4">
+                    <span className="text-5xl font-thin">25</span>
+                    <span className=" bg-emerald-600 text-white px-2 py-1 rounded-md">DÉGRADÉ</span>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  className=" bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <div className="flex flex-col justify-center items-center  gap-2 p-4">
+                    <span className="text-5xl font-thin">8</span>
+                    <span className=" bg-gray-500 text-amber-400 px-2 py-1 rounded-md">ARRÊT</span>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  className=" bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <div className="flex flex-col justify-center items-center  gap-2 p-4">
+                    <span className="text-5xl font-thin">3</span>
+                    <span className=" bg-slate-400 text-white px-2 py-1 rounded-md">NO DATA</span>
+                  </div>
+                </a>
+              </div>
+              <div className="mb-4">
+                <ModeToggle />
+              </div>
             </div>
-            {/* <p className="mt-10">
-              <span className="font-bold">site_id :</span> <span>{site_id}</span>
-            </p>
-            <p>
-              <span className="font-bold">datetime :</span> {datetime.toLocaleDateString()}
-            </p> */}
           </div>
         </div>
       </div>

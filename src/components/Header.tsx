@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <section className="bg-slate-100 dark:bg-black">
       <div className="md:container md:mx-auto py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 *:border *:p-4 text-xs text-slate-500">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 *:border *:p-4 text-xs text-slate-400">
           <div className="dark:border-0 rounded-2xl">
             <p className="mb-2">
               <span className="font-bold">ÉPICE ENERGIE</span>

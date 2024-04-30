@@ -18,10 +18,14 @@ const SiteCard = ({ site }: SiteCardProps) => {
       <a
         // key={uuidv4()}
         href="#"
-        className="flex flex-col sm:flex-row bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px] hover:transition-all ease-in-out delay-150 duration-300 hover:bg-slate-50"
+        className="flex flex-col sm:flex-row 2xl:flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px] hover:transition-all ease-in-out delay-150 duration-300 hover:bg-slate-50"
       >
-        <div className=" transition-all sm:aspect-square flex-none w-full sm:w-24 md:w-48 lg:w-60 xl:w-80">
-          <img src={site.picture} className=" w-full h-40 sm:h-full object-cover" loading="lazy" />
+        <div className=" transition-all sm:aspect-square 2xl:aspect-auto flex-none w-full sm:w-24 md:w-48 lg:w-60 2xl:w-full">
+          <img
+            src={site.picture}
+            className=" w-full h-40 sm:h-full 2xl:h-40 object-cover"
+            loading="lazy"
+          />
         </div>
         <div className="flex-auto p-6">
           <div className="flex flex-wrap">
