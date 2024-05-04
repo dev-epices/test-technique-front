@@ -1,19 +1,19 @@
 // import { DataPoint, Site } from '../data/types'
 
 /**
- * Flo: production ratio calculation (or generic percent between 2 numbers)
- * @param totalProds number, the value that we want to get in percent
- * @param totalRefs number, the relative 100
- * @returns number
+ * Flo: ratio calculation (generic percent between 2 numbers)
+ * @param numerator number, the value that we want to get in percent
+ * @param denominator number, the relative 100
+ * @returns a number which is the numerator in a percent ratio
  */
-export const tauxProd = (totalProds: number, totalRefs: number) => {
-  let tauxProdCalc = (totalProds * 100) / totalRefs
+export const ratio = (numerator: number, denominator: number) => {
+  let percentCalc = (numerator * 100) / denominator
 
-  return tauxProdCalc
+  return percentCalc
 }
 
 /**
- * Flo : Taux de Production calculation, take two arrays of numbers to calc both sums and return the ratio (percent)
+ * Flo : Status calculation, take two arrays of numbers to calc both sums and return the ratio (percent)
  * @param allProdsThisDay array of productions
  * @param allRefsThisDay array of references
  * @returns number (taux de production)
@@ -33,8 +33,8 @@ export const statusCalculation = function (allProdsThisDay: number[], allRefsThi
         })
       : null
 
-  let ratio = 0
-  ratio = tauxProd(cumulProds!, cumulRefs!)
+  let ratioProdRef = 0
+  ratioProdRef = ratio(cumulProds!, cumulRefs!)
 
-  return ratio
+  return ratioProdRef
 }

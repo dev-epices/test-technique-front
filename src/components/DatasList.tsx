@@ -7,13 +7,14 @@ import { fetchSites } from '../data/fetch'
 // import { Experimental } from './Experimental'
 // import { v4 as uuidv4 } from 'uuid'
 import { ModeToggle } from './mode-toggle'
+import useDataForDay from '../Utils/xxx-useDataForDay'
 
 type DayToShow = {
-  site_id: number
+  // site_id: number
   datetime: Date
 }
 
-const DatasList = ({ site_id, datetime }: DayToShow) => {
+const DatasList = ({ datetime }: DayToShow) => {
   // const [dataPoint, setDataPoint] = useState<DataPoint[]>()
   const [dataSite, setDataSite] = useState<Site[]>()
   const [sitesLength, setSitesLength] = useState(1)
@@ -22,7 +23,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
     // fetchData(site_id, datetime)
     fetchSitesForIds()
   }, [datetime])
-  console.log(site_id)
+  // console.log(site_id)
 
   // const fetchData = useCallback(async (id: number, date: Date) => {
   //   const data = await fetchDataForDay(id, date)
@@ -96,6 +97,7 @@ const DatasList = ({ site_id, datetime }: DayToShow) => {
                   Production cumulée
                 </span>
               </p>
+              <div>prod: (1234, datetime) :{useDataForDay(1234, datetime)}</div>
               <p>
                 Le{' '}
                 <span className="dark:text-slate-300 text-slate-600">

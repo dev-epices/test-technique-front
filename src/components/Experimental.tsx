@@ -4,6 +4,8 @@ import { DataPoint } from '../data/types'
 import { Production, Reference, Datetime } from './DatasLi'
 import { fetchDataForDay } from '../data/fetch'
 import { v4 as uuidv4 } from 'uuid'
+import { ratio } from '../Utils/useCalculation'
+import { fetchAllProds } from '../Utils/rr'
 
 type DayToShow = {
   site_id: number
@@ -13,10 +15,12 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
   // const [dayToShow, setDayToShow] = useState(datetime)
   const [dataPoint, setDataPoint] = useState<DataPoint[]>()
   // const [newDatetime, setNewdatetime] = useState(datetime)
+  const [prods, setProds] = useState([0])
 
   /**
    * listen if datetime prop change , fetch with datetime value
    */
+
   useEffect(() => {
     fetchData(site_id, datetime)
   }, [datetime])
@@ -28,6 +32,10 @@ export const Experimental = ({ site_id, datetime }: DayToShow) => {
   const fetchData = useCallback(async (id: number, date: Date) => {
     const data = await fetchDataForDay(id, date)
     setDataPoint(data)
+  }, [])
+  // TEST
+  useEffect(() => {
+    fetchAllProds(site_id, datetime)
   }, [])
 
   /** listen dataPoint state
