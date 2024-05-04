@@ -3,7 +3,7 @@ import { DataPoint } from '../data/types'
 
 // export const UiContext = createContext(undefined)
 export const UiContext = createContext<DataPoint | undefined>(undefined)
-// export const UiContext = createContext<Date | undefined>(undefined)
+export const UiDateContext = createContext<Date | undefined>(undefined)
 
 export function useUiContext() {
   const calendarDate = useContext(UiContext)
@@ -20,4 +20,12 @@ export function useUiContext() {
   // }, [calDate])
 
   return calendarDate
+}
+
+export function useUiDateContext() {
+  const selectionDate = useContext(UiDateContext)
+  if (selectionDate === undefined) {
+    throw new Error('FLO : useUiDateContext must be used with a <UiDateContext.Provider> as parent')
+  }
+  return selectionDate
 }
