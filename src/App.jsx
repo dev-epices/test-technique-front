@@ -21,7 +21,7 @@ function App() {
           className="bg-slate-100 dark:bg-black">
           <div className="md:container md:mx-auto py-10">
             <UiLayout/>
-            <Ui/>
+            {/* <Ui/> */}
           </div>
         </section>
       </div>

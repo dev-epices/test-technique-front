@@ -10,8 +10,16 @@ import { buttonVariants } from './button'
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
+  const disabledDays = [
+    // new Date(2024, 5, 10),
+    // new Date(2024, 5, 12),
+    // new Date(2024, 5, 20),
+    { from: new Date(2024, 3, 5), to: new Date(2024, 3, 30) },
+  ]
   return (
     <DayPicker
+      disabled={disabledDays}
+      defaultMonth={new Date(2024, 3)}
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{

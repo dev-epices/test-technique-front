@@ -15,12 +15,12 @@ import { SiteListing } from '../SiteListing'
 import { ModeToggle } from '../mode-toggle'
 
 const UiLayout = () => {
-  const [date, setDate] = useState<Date | undefined>(new Date()) // force new date for never have undefined value
+  const [date, setDate] = useState<Date | undefined>(new Date(2024, 3, 10)) // force new date for never have undefined value
 
   return (
     <UiDateContext.Provider value={date}>
       <div className="">
-        <div className="sticky top-0 flex justify-between p-8 rounded-lg bg-white/50 dark:bg-black/30 backdrop-blur-xl   ">
+        <div className=" z-50 sticky top-0 flex justify-between p-8 rounded-lg bg-white/50 dark:bg-black/30 backdrop-blur-xl   ">
           {/* <DatePicker /> */}
           <Popover>
             <PopoverTrigger asChild>
@@ -41,13 +41,9 @@ const UiLayout = () => {
           </Popover>
           <ModeToggle />
         </div>
-        <div className="border p-2 sm:p-8">
+        <div className="border px-2 sm:px-8 sm:py-8">
           <SiteListing />
         </div>
-      </div>
-      <div className="h-[200px] border my-4">
-        <p>My content</p>
-        {/* <SiteListing /> */}
       </div>
     </UiDateContext.Provider>
   )

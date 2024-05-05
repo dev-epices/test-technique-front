@@ -15,7 +15,16 @@ export const SiteListing = () => {
         </div>
       </div>
       {/* <div className="flex flex-col sm:flex-row gap-3 flex-wrap"> */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2">
+        {sites.map((site, index) => (
+          <CardMini key={index} site={site} />
+        ))}
+        {sites.map((site, index) => (
+          <CardMini key={index} site={site} />
+        ))}
+        {sites.map((site, index) => (
+          <CardMini key={index} site={site} />
+        ))}
         {sites.map((site, index) => (
           <CardMini key={index} site={site} />
         ))}
