@@ -6,28 +6,21 @@ import { Calendar } from '../ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { DatePicker } from '../ui/DatePicker'
 import { useEffect } from 'react'
-import { TestComponent } from '../TestComponent'
 
 import { cn } from '../../lib/utils'
 import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import { Button } from '../ui/button'
 import { SiteListing } from '../SiteListing'
+import { ModeToggle } from '../mode-toggle'
 
 const UiLayout = () => {
   const [date, setDate] = useState<Date | undefined>(new Date()) // force new date for never have undefined value
 
   return (
     <UiDateContext.Provider value={date}>
-      <div className="grid grid-cols-2">
-        <div>
-          <p>UiLayout </p>
-          <p>
-            Date :{' '}
-            {date !== undefined
-              ? date.toLocaleString('fr-FR', { dateStyle: 'full' })
-              : new Date().toLocaleString('fr-FR', { dateStyle: 'full' })}
-          </p>
+      <div className="">
+        <div className="sticky top-0 flex justify-between p-8 rounded-lg bg-white/50 dark:bg-black/30 backdrop-blur-xl   ">
           {/* <DatePicker /> */}
           <Popover>
             <PopoverTrigger asChild>
@@ -44,23 +37,17 @@ const UiLayout = () => {
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
               <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-              {/* <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-md border"
-                initialFocus
-              /> */}
             </PopoverContent>
           </Popover>
+          <ModeToggle />
         </div>
-
-        <div>
+        <div className="border p-2 sm:p-8">
           <SiteListing />
         </div>
       </div>
       <div className="h-[200px] border my-4">
         <p>My content</p>
+        {/* <SiteListing /> */}
       </div>
     </UiDateContext.Provider>
   )

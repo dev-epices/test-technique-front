@@ -17,7 +17,6 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className=' bg-[rgb(226 232 240)]'>
-        <ModeToggle/>
         <section // contain all Ui stuffs
           className="bg-slate-100 dark:bg-black">
           <div className="md:container md:mx-auto py-10">
