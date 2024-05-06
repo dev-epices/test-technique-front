@@ -1,4 +1,3 @@
-import React from 'react'
 import { useUiDateContext } from '../Utils/UiContext'
 
 export const ShowDate = () => {

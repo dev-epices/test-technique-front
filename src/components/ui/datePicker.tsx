@@ -10,11 +10,6 @@ import { Calendar } from './calendar'
 import { Popover, PopoverContent, PopoverTrigger } from './popover'
 
 import { useUiDateContext } from '../../Utils/UiContext'
-import { useEffect } from 'react'
-
-// interface DatePickerProps {
-//   onSelectedDate: (selectedDate: Date) => void
-// }
 
 export function DatePicker() {
   const selectionDate = useUiDateContext()

@@ -1,20 +1,39 @@
-import React from 'react'
-import { ShowDate } from './ShowDate'
 import useSite from '../Utils/useSite'
 import { CardMini } from './CardMini'
+import { Badge } from './ui/badge'
 
 export const SiteListing = () => {
   const sites = useSite()
   return (
     <>
-      {/* <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"> */}
-      <div className="flex items-center justify-between mb-4">
-        <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Sites</h5>
-        <div className="text-sm text-gray-500 truncate dark:text-gray-400">
-          <ShowDate />
-        </div>
+      <div className="flex flex-col gap-4 sm:flex-row items-center justify-between py-8">
+        <h5 className="text-lg leading-none text-gray-900 dark:text-slate-500">
+          Taux de production par sites
+        </h5>
+
+        <ul className="inline-flex flex-wrap gap-2">
+          <li>
+            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
+              194<span className=" opacity-60 pl-2">OK</span>
+            </Badge>
+          </li>
+          <li>
+            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
+              75 <span className=" opacity-60 pl-2"> dégradés</span>
+            </Badge>
+          </li>
+          <li>
+            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
+              12 <span className=" opacity-60 pl-2">A l'arrêt</span>
+            </Badge>
+          </li>
+          <li>
+            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
+              12 <span className=" opacity-60 pl-2">Pas de données</span>
+            </Badge>
+          </li>
+        </ul>
       </div>
-      {/* <div className="flex flex-col sm:flex-row gap-3 flex-wrap"> */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2">
         {sites.map((site, index) => (
           <CardMini key={index} site={site} />
@@ -32,8 +51,6 @@ export const SiteListing = () => {
           <CardMini key={index} site={site} />
         ))}
       </div>
-      {/* <SiteCard site={site} /> */}
-      {/* </div> */}
     </>
   )
 }

@@ -33,7 +33,7 @@ export const statusCalculation = function (allProdsThisDay: number[], allRefsThi
         })
       : null
 
-  let ratioProdRef = 0
+  let ratioProdRef: number | string = 0
   ratioProdRef = ratio(cumulProds!, cumulRefs!)
 
   return ratioProdRef
