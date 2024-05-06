@@ -4,14 +4,14 @@ import { Badge } from './ui/badge'
 
 export const SiteListing = () => {
   const sites = useSite()
+
   return (
     <>
       <div className="flex flex-col gap-4 sm:flex-row items-center justify-between py-8">
-        <h5 className="text-lg leading-none text-gray-900 dark:text-slate-500">
+        <h5 className="text-lg font-semibold leading-none text-slate-700 dark:text-slate-500">
           Taux de production par sites
         </h5>
-
-        <ul className="inline-flex flex-wrap gap-2">
+        <ul className="inline-flex justify-center sm:justify-start flex-wrap gap-2">
           <li>
             <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
               194<span className=" opacity-60 pl-2">OK</span>

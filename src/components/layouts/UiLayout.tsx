@@ -12,12 +12,12 @@ import { SiteListing } from '../SiteListing'
 import { ModeToggle } from '../mode-toggle'
 
 const UiLayout = () => {
-  const [date, setDate] = useState<Date | undefined>(new Date(2024, 3, 1)) // force new date for never have undefined value
+  const [date, setDate] = useState<Date | undefined>(new Date(2024, 3, 1)) // 1th April calendar setting to see datas days & prevent undefined value
 
   return (
     <UiDateContext.Provider value={date}>
-      <div role="allowSticky" className="">
-        <div className=" border-b z-50 sticky top-0 flex justify-between p-8 rounded-lg bg-white/70 dark:bg-black/70 backdrop-blur-2xl     ">
+      <div role="allowSticky">
+        <div className="sticky top-0 z-50 flex justify-between p-8 rounded-lg border-b bg-white/70 dark:bg-black/70 backdrop-blur-2xl">
           <Popover>
             <PopoverTrigger asChild>
               <Button
